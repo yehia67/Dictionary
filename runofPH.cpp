@@ -4,13 +4,21 @@
 #include<fstream>
 using namespace std;
 int main(){
-	ifstream englishword,arabicword;
+	ifstream englishword,frenshword;
 	englishword.open("english.txt");
-	arabicword.open("arabic.txt");	
+	frenshword.open("frensh.txt");	
+	if(englishword.fail()){
+		cerr <<"Error Opening english text file"<<endl;
+		exit(1);
+	}
+	if(frenshword.fail()){
+		cerr <<"Error Opening Frensh text file"<<endl;
+		exit(1);
+	}
 	int x;
 //	printf("please enter 1 if u want to translate from English to Arabic or enter 2 if u want to translate from Arabic to English \n ");
-    cout<<"enter 1 English to arabic"<<endl;
-	cout<<"enter 2 arabic to english"<<endl;	
+    cout<<"enter 1 English to frensh"<<endl;
+	cout<<"enter 2 Frensh to english"<<endl;	
 	cin>>x;
 	while(x != 1 && x!= 2)
 {
@@ -21,21 +29,23 @@ int main(){
 		string s;
 		cin>>s;
 		map <string,string> m;
-		string englishItem,arabicItem;
+		string englishItem,frenchItem;
 		
-		while(!(englishword.eof()) && !(arabicword.eof()))
+		while(!(englishword.eof()) && !(frenshword.eof()))
 {
 	englishword >> englishItem;
-	arabicword >> arabicItem;
+	getline(frenshword,frenchItem);
 	if(x == 1)
 	{
-		m[englishItem] = arabicItem;
+		m[englishItem] = frenchItem;
 	}
 else
 {
-	m[arabicItem] = englishItem ;
+	m[frenchItem] = englishItem ;
 }
 }
  cout<<m[s]<<endl;
+ englishword.close();
+ frenshword.close();
 	return 0;
 }
