@@ -37,6 +37,8 @@ int main(){
 	cout<<"enter 2 Frensh to english"<<endl;
 	cout<<"enter 3 English to German"<<endl;	
 	cin>>x;
+	string dictionary[2];
+	if(x ==2)
 	while(x != 1 && x!= 2 && x != 3 )  
 {
 	printf("Error enter 1 2 or 3 Only!! \n ");
