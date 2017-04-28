@@ -37,7 +37,7 @@ int main(){
 	cout<<"enter 2 Frensh to english"<<endl;
 	cout<<"enter 3 English to German"<<endl;	
 	cin>>x;
-	string dictionary[2];
+	char hold[10];
 	if(x ==2)
 	while(x != 1 && x!= 2 && x != 3 )  
 {
@@ -52,14 +52,21 @@ int main(){
 		
 		while(!(englishword.eof()) && !(frenshword.eof()))
 {
-	englishword >> englishItem;
+		englishword >> englishItem;
 	getline(frenshword,forgeinItem);
 	if(x == 1)
 	{
+	
+	
 		m[englishItem] = forgeinItem;
 	}
 else if(x == 2)
-{
+{ int k = 0;
+   while((forgeinItem[k] != '[' )|| (forgeinItem[k] != ' ')|| (forgeinItem[k] != ',') )
+  {
+  	k++;
+  }
+  forgeinItem.erase(forgeinItem.begin()+k);
 	m[forgeinItem] = englishItem ;
 }
 }
@@ -71,8 +78,13 @@ while(!(englishGword.eof()) && !(Germanword.eof())){
 		m[englishItem] = forgeinItem;
 	}
 }
+string b = "zy";
+  if(m[s] != m[b])
  cout<<m[s]<<endl;
+ else
+  cout<<"Sorry we dont know the meaning of this world"<<endl;
  englishword.close();
  frenshword.close();
+ Germanword.close();
 	return 0;
 }
